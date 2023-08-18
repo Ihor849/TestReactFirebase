@@ -1,7 +1,8 @@
-import { TitleBox } from 'pages/HomePage/HomePage.styled';
-import { ContainerBox } from './Container.styled';
+import { MainContainer } from './Container.styled';
 
-export const Container = ({ children }) => {
-  return <ContainerBox>{children}</ContainerBox>;
-};
-export default Container;
+
+export const Container =({ children })  => {
+  
+
+    return <MainContainer  className='container'>{children}</MainContainer>
+}

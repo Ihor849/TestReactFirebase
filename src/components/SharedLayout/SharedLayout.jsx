@@ -1,25 +1,30 @@
-import { useSelector } from 'react-redux';
-import { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
-import { ContainerShared, Header } from './SharedLayout.styled';
-import Navigation from 'components/Navigation/NavigationUser';
-import AuthNav from 'components/Navigation/AuthNav';
-import UserMenu from 'components/Navigation/UserMenu';
-// import { authSelectors } from 'redux/auth';
+import { Suspense } from "react";
+import { Outlet } from "react-router-dom";
+import { iconLogo, iconMenuHamburger} from "../../images/icons";
+import {AuthNav} from "../Navigation/AuthNav"
 
-const SharedLayouts = () => {
-  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+
+
+import { Nav } from "../Navigation/Nav";
+
+import { AuthNavWrap, LayoutWrap, LogoLink } from "./SharedLayout.styled";
+import { ButtonBurger } from "../Navigation/Navigation.styled";
+
+export const SharedLayout = () => {
   return (
-    <ContainerShared >
-      <Header>
-        <Navigation />
-        {/* {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
-      </Header>
+    <div className="sharedLayout">
+      <LayoutWrap className="layoutWrap">
+        <LogoLink to="/">{iconLogo}</LogoLink>
+        <Nav />
+        <AuthNavWrap>
+          <AuthNav/>
+          <ButtonBurger>{iconMenuHamburger}</ButtonBurger>
+        </AuthNavWrap>
+        
+      </LayoutWrap>
       <Suspense>
-        <Outlet />
-      </Suspense>
-    </ContainerShared>
+          <Outlet />
+        </Suspense>
+    </div>
   );
 };
-
-export default SharedLayouts;
